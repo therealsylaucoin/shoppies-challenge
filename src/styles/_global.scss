@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Open+Sans:wght@400;700&display=swap');
+
+:root {
+    --primaryGreen: #008060;
+    --secondaryGreen: #054A49;
+    --red: #C43256;
+    --headingFont: 'Open Sans', sans-serif;
+    --font: 'Lato', sans-serif;
+}
+
+.App {
+    text-align: center;
+    font-family: var(--font);
+}

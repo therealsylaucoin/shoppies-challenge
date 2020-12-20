@@ -1,23 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import './styles/App.scss';
+import Header from './components/Header';
+import Search from './components/Search';
+import Nominations from './components/Nominations'
+import Footer from './components/Footer';
+
+//Pseudo
+//make axios call to get list of movies
+//autocomplete search input from that list
+//grad the user input and make axios call with the input
+//print results
+//when user clicks nominate button, push that movie to a database
+//component nomiations prints those nominations - with a button to delete
+//when nominations array (from dbref) =5, show banner and remove search component
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      < Header />
+
+      <main>
+
+        < Search />
+
+        < Nominations />
+
+        {/* < Banner /> */}
+
+      </main>
+
+      <Footer />
+
     </div>
   );
 }
