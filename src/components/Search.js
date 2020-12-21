@@ -84,7 +84,7 @@ function Search(props){
         }
     }
 
-    return (
+return (
     <section className="search wrapper">
 
         <h3>Search for a movie</h3>
@@ -95,6 +95,7 @@ function Search(props){
                 type='text' 
                 id='movieTitle'
                 placeholder="Movie title"
+                autoComplete="off"
                 onKeyDown={handleKeyPress}
                 onChange={handleChange}
                 >
@@ -103,18 +104,20 @@ function Search(props){
 
         {
             movieSearch
-            ? <h3>Results for "{movieSearch}"</h3>
-            : null
+            ? <p>Results for "{movieSearch}"</p>
+            : <p>Enter movie title to get search results.</p>
         }
 
-        {/* //Display the movies on the page by mapping through the array */}
-        <ul>
+        <div className="ulContainer">
+
             < Placeholder array={['','','','','']}/>
 
-            {
+            {/* //Display the movies on the page by mapping through the array */}
+            <ul>
+            {   
                 movieSearchArray.map((movie) => {
                     return(
-                        <li key={movie.imdbID} className="movie movie__top">
+                        <li key={movie.imdbID} className="movie">
                             < Movie
                                 title={movie.Title}
                                 year={movie.Year}
@@ -128,17 +131,20 @@ function Search(props){
                                 title={movie.Title}
                                 year={movie.Year}
                                 poster={movie.Poster}
+                                label='Nominate'
+                                altLabel='Nominated'
                             />
                         </li>
                     )
                 })
             }
-        </ul>
-    
-        </section>
-    );
-}
+            </ul>
 
+        </div>
+    
+    </section>
+);
+}
 
 function Button(props){
 
@@ -148,6 +154,8 @@ function Button(props){
     useEffect(() => {
         if (filteredArray.includes(id)) {
             setButtonStatus(false);
+        } else {
+            setButtonStatus(true);
         }
     }, [filteredArray, id])
 
@@ -158,10 +166,10 @@ function Button(props){
                 onClick={() => 
                     {props.handleClick(id, title, year, poster)}}
                     >
-                Nominate
+                {props.label}
             </button>
-        :   <button className="nominated">
-                Nominated
+        :   <button className="disabled">
+                {props.altLabel}
             </button>
     )
 }

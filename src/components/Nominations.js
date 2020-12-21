@@ -34,38 +34,43 @@ function Nominations(props){
         dbref.child(id).remove();
     }
 
-    return(
+return(
         <section className="wrapper nominations">
 
             <h3>Your nominations</h3>
 
-                <ul>
+                <div className="ulContainer">
 
                     < Placeholder array={[1, 2, 3, 4, 5]}/>
-                    {
 
-                        props.nomsArray.map((movie) => {
-                            return(
-                                <li key={movie.id} className="movie movie__top">
+                    {/* //Display the movies on the page by mapping through the array */}
+                    <ul>
 
-                                    < Movie 
-                                        title={movie.movie.title}
-                                        year={movie.movie.year}
-                                        poster={movie.movie.posterUrl}
-                                    />
+                        { 
+                            props.nomsArray.map((movie) => {
+                                return(
+                                    <li key={movie.id} className="movie">
 
-                                    <button
-                                            onClick={() => {handleClick(movie.id)}}
-                                        >
-                                            Remove
-                                    </button>
+                                        < Movie 
+                                            title={movie.movie.title}
+                                            year={movie.movie.year}
+                                            poster={movie.movie.posterUrl}
+                                        />
 
-                                </li>
-                            )
-                        })
+                                        <button
+                                                onClick={() => {handleClick(movie.id)}}
+                                            >
+                                                Remove
+                                        </button>
 
-                    }
-                </ul>
+                                    </li>
+                                )
+                            })
+
+                        }
+                    </ul>
+
+                </div>
 
         </section>
     )

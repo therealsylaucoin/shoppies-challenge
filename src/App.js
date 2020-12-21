@@ -18,7 +18,7 @@ function App() {
 
         <main>
 
-            <section className="searchContainer wrapper">
+            <section className="searchContainer">
                 {
                 nomsArray.length === 5
                 ? < Banner />

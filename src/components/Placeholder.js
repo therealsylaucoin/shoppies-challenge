@@ -4,7 +4,7 @@ function Placeholder(props){
             {
                 props.array.map((index) => {
                     return (
-                        <li className="movie"><p>{index}</p></li>
+                        <li className="placeholder"><p>{index}</p></li>
                     );
                 })
             }

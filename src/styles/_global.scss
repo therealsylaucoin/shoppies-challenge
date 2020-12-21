@@ -37,7 +37,6 @@ h1, h2, h3 {
 
 li {
     display: flex;
-    height: 100%;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
@@ -46,46 +45,9 @@ li {
 ul {
     list-style: none;
     display: flex;
-    justify-content: center;
     flex-wrap: wrap;
-    width: 100%;
-    height: fit-content;
-    padding: 25px 0;
 }
 
 a {
     text-decoration: none;
 }
-
-img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-button {
-    border-radius: 4px;
-    cursor: pointer;
-    box-shadow: 0 5px 15px 0 rgba(0,0,0,0.15);
-    background-color: #c43256;
-    color: #ffffff;
-    border: 1px solid transparent;
-    text-align: center;
-    font-weight: 700;
-    font-size: 1.8rem;
-    width: fit-content;
-    padding: 5px 10px;
-
-    &:hover {
-        background-color: #7d1c34;
-    }
-}
-
-.nominated {
-    background-color: #7d1c34;
-    cursor: auto;
-}
-
-
-
-

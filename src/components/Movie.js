@@ -3,8 +3,9 @@ function Movie(props){
     const { poster, title, year } = props;
 
     return(
+        props 
+        ?
         <>
-
         {
             poster !== 'N/A' 
             ?   <div 
@@ -24,6 +25,9 @@ function Movie(props){
                 <p>({year})</p>
             </div>
         </>
+
+        :
+        <div> empty</div>
     )
 }
 
