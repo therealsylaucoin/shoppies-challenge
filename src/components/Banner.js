@@ -1,8 +1,8 @@
 function Banner(){
     return (
-        <div>
-            <p>You have five nominations.</p>
-            <p>You can change your nominations by removing them.</p>
+        <div className="banner wrapper">
+            <p>Thank you for your nominations!</p>
+            <p>You can edit your choices anytime by replacing them.</p>
         </div>
     )
 }

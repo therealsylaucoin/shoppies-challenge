@@ -1,33 +1,30 @@
 function Movie(props){
 
-    const { poster, title, year } = props;
+    const { movie } = props;
+    const backgroundColor = '#F4F5FA';
 
     return(
-        props 
-        ?
         <>
         {
-            poster !== 'N/A' 
+            movie.Poster !== 'N/A' 
             ?   <div 
                     className="movie__img" 
-                    aria-label={title} 
-                    style={{backgroundImage: `url(${poster})`}}>
+                    aria-label={movie.Title} 
+                    style={{backgroundImage: `url(${movie.Poster})`}}>
                 </div>
             :   <div 
                     className="movie__img" 
-                    aria-label={title}>
+                    aria-label={movie.Title}
+                    style={{backgroundColor: backgroundColor}}>
                         <p>Poster not available</p>
                 </div>
         }
 
             <div className="movie__info">
-                <p>{title}</p>
-                <p>({year})</p>
+                <p>{movie.Title}</p>
+                <p>({movie.Year})</p>
             </div>
         </>
-
-        :
-        <div> empty</div>
     )
 }
 

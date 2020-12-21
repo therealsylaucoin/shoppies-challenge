@@ -1,16 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato&family=Open+Sans:wght@400;700&display=swap');
 
 :root {
-    --primaryGreen: #008060;
-    --secondaryGreen: #054A49;
-    --red: #C43256;
+    --lightblue: #B3BCF5;
+    --blue: #5C6AC4;
+    --darkblue: #202E78;
+    --base: #212B36;
+    --muted: #F4F5FA;
     --headingFont: 'Open Sans', sans-serif;
     font-size: 62.5%;
 }
 
 body {
     font-size: 1.8rem;
-    --font: 'Lato', sans-serif;
+    --font: 'Lato', sans-serif;;
+    color: var(--base);
 }
 
 .wrapper {
@@ -45,6 +48,7 @@ li {
 ul {
     list-style: none;
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
 }
 

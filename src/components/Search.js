@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import Placeholder from './Placeholder';
 import Movie from './Movie';
 import axios from 'axios';
 import firebase from '../firebase.js'
@@ -37,7 +36,7 @@ function Search(props){
             return movie.imdbID
         })
         const array1 = nomsArray.map((movie) => {
-            return movie.movie.id;
+            return movie.movie.imdbID;
         })
         // eslint-disable-next-line no-extend-native
         Array.prototype.diff = function(arr2) {
@@ -63,18 +62,27 @@ function Search(props){
         setMovieSearch(e.target.value);
     }
 
+//Clear the input + search results
+    function handleClear(e){
+        e.preventDefault();
+        const field = document.getElementById('movieTitle');
+        field.value = '';
+        setMovieSearch();
+        setMovieSearchArray([]);
+    }
+
 //HandleClick to save the movie once it's nominated
-    function handleClick(id, title, year, poster){
+    function handleClick(movie){
     //Push the movie to the Firebase Database
-        const movie = {
-            id: id,
-            title: title,
-            year: year,
-            posterUrl: poster,
+        const obj = {
+            imdbID: movie.imdbID,
+            Title: movie.Title,
+            Year: movie.Year,
+            Poster: movie.Poster,
         }
         //make reference to the database + push
         const dbref = firebase.database().ref();
-        dbref.push(movie);
+        dbref.push(obj);
     }
 
 //Prevent refresh on enter
@@ -100,17 +108,22 @@ return (
                 onChange={handleChange}
                 >
             </input>
+            
+                <button
+                    onClick={handleClear}
+                >
+                        Clear search
+                </button>
+            
         </form>
 
         {
             movieSearch
             ? <p>Results for "{movieSearch}"</p>
-            : <p>Enter movie title to get search results.</p>
+            : <p>Enter a title to display movies.</p>
         }
 
         <div className="ulContainer">
-
-            < Placeholder array={['','','','','']}/>
 
             {/* //Display the movies on the page by mapping through the array */}
             <ul>
@@ -119,18 +132,13 @@ return (
                     return(
                         <li key={movie.imdbID} className="movie">
                             < Movie
-                                title={movie.Title}
-                                year={movie.Year}
-                                poster={movie.Poster}
+                                movie={movie}
                             />
                             
                             < Button 
                                 filteredArray={filteredArray}
                                 handleClick={handleClick}
-                                id={movie.imdbID}
-                                title={movie.Title}
-                                year={movie.Year}
-                                poster={movie.Poster}
+                                movie={movie}
                                 label='Nominate'
                                 altLabel='Nominated'
                             />
@@ -149,22 +157,22 @@ return (
 function Button(props){
 
     const [ buttonStatus , setButtonStatus ] = useState(true);
-    const { filteredArray, id, title, year, poster } = props;
+    const { filteredArray, movie } = props;
 
     useEffect(() => {
-        if (filteredArray.includes(id)) {
+        if (filteredArray.includes(movie.imdbID)) {
             setButtonStatus(false);
         } else {
             setButtonStatus(true);
         }
-    }, [filteredArray, id])
+    }, [filteredArray, movie.imdbID])
 
     return(
         buttonStatus
         ?   <button 
-                id={id}
+                id={movie.imdbID}
                 onClick={() => 
-                    {props.handleClick(id, title, year, poster)}}
+                    {props.handleClick(movie)}}
                     >
                 {props.label}
             </button>

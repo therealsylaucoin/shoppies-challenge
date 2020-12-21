@@ -1,0 +1,22 @@
+header,
+footer {
+    background-color: var(--lightblue);
+}
+
+h1, h2 {
+    margin: 10px auto;
+}
+
+header {
+    padding: 50px 0;
+    border-bottom: 2px solid var(--darkblue);
+}
+
+footer {
+    padding: 20px 0;
+    border-top: 2px solid var(--darkblue);
+    a {
+        color: var(--darkblue);
+    }
+}
+

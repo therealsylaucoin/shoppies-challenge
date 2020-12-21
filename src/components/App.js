@@ -1,10 +1,10 @@
-import './styles/App.scss';
+import '../styles/App.scss';
 import { useState } from 'react';
-import Header from './components/Header';
-import Banner from './components/Banner'
-import Search from './components/Search';
-import Nominations from './components/Nominations'
-import Footer from './components/Footer'
+import Header from './Header';
+import Banner from './Banner'
+import Search from './Search';
+import Nominations from './Nominations'
+import Footer from './Footer'
 
 function App() {
 
@@ -18,7 +18,7 @@ function App() {
 
         <main>
 
-            <section className="searchContainer">
+            <section>
                 {
                 nomsArray.length === 5
                 ? < Banner />

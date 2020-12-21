@@ -1,9 +1,12 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import firebase from '../firebase';
-import Placeholder from './Placeholder';
 import Movie from './Movie';
 
 function Nominations(props){
+
+    const { nomsArray, setNomsArray } = props;
+    const [ placeholderArray, setPlaceholderArray ] = useState([]);
+
     useEffect(() => {
         //make a reference to the database
         const dbRef = firebase.database().ref();
@@ -23,9 +26,20 @@ function Nominations(props){
                 //push into the empty array created earlier
                 movieArray.push(formattedObj);
             }
-            props.setNomsArray(movieArray);
+            setNomsArray(movieArray);
         });
     }, []);
+
+//Placeholder array to display placeholders for the nominations
+    useEffect((i) => {
+        const numOfPlaceholder = 5 - (nomsArray.length);
+        const array = [];
+        
+        for (i = 1; i <= numOfPlaceholder ; i ++ ) {
+            array.push(i);
+            setPlaceholderArray(array);
+        }
+    }, [nomsArray])
 
     //HandleClick to remove movies from database
     function handleClick(id){
@@ -39,10 +53,6 @@ return(
 
             <h3>Your nominations</h3>
 
-                <div className="ulContainer">
-
-                    < Placeholder array={[1, 2, 3, 4, 5]}/>
-
                     {/* //Display the movies on the page by mapping through the array */}
                     <ul>
 
@@ -52,9 +62,7 @@ return(
                                     <li key={movie.id} className="movie">
 
                                         < Movie 
-                                            title={movie.movie.title}
-                                            year={movie.movie.year}
-                                            poster={movie.movie.posterUrl}
+                                            movie={movie.movie}
                                         />
 
                                         <button
@@ -66,11 +74,19 @@ return(
                                     </li>
                                 )
                             })
+                        }
 
+                        {
+                            nomsArray.length < 5
+                            ? placeholderArray.map((index) => {
+                                return(
+                                    <li key={index} className="placeholder">
+                                    </li>
+                                )
+                            })
+                            : null
                         }
                     </ul>
-
-                </div>
 
         </section>
     )
