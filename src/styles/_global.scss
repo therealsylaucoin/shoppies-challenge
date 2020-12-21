@@ -5,10 +5,87 @@
     --secondaryGreen: #054A49;
     --red: #C43256;
     --headingFont: 'Open Sans', sans-serif;
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.8rem;
     --font: 'Lato', sans-serif;
+}
+
+.wrapper {
+    max-width: 1280px;
+    width: 80%;
+    margin: 0 auto;
 }
 
 .App {
     text-align: center;
     font-family: var(--font);
 }
+
+h1, h2, h3 {
+    font-family: var(--headingFont);
+    font-weight: 700;
+}
+
+//strip styles
+* {
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    height: fit-content;
+    padding: 25px 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+button {
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px 0 rgba(0,0,0,0.15);
+    background-color: #c43256;
+    color: #ffffff;
+    border: 1px solid transparent;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.8rem;
+    width: fit-content;
+    padding: 5px 10px;
+
+    &:hover {
+        background-color: #7d1c34;
+    }
+}
+
+.nominated {
+    background-color: #7d1c34;
+    cursor: auto;
+}
+
+
+
+

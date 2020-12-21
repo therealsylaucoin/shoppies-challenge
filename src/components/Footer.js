@@ -6,7 +6,7 @@ function Footer() {
         <footer className="Footer">
 
             <p>
-                Made by <a href="https://sylcodes.com" target="_blank" rel="noreferrer">Syl</a> - For <a href="https://shopify.com" target="_blank" rel="noreferrer">Shopify</a> < FaShopify />
+                Made by <a href="https://sylcodes.com" target="_blank" rel="noreferrer">Syl</a> - For < FaShopify /> <a href="https://shopify.com" target="_blank" rel="noreferrer">Shopify</a>
             </p>
 
         </footer>

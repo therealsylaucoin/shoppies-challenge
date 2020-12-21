@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import firebase from '../firebase';
+import Placeholder from './Placeholder';
+import Movie from './Movie';
 
-function Nominations(){
-    const [ nomsArray, setNomsArray ] = useState([]);
-
+function Nominations(props){
     useEffect(() => {
         //make a reference to the database
         const dbRef = firebase.database().ref();
@@ -18,13 +18,12 @@ function Nominations(){
                 const propertyVal = firebaseDataObj[propertyKey];
                 const formattedObj = {
                     id: propertyKey,
-                    movie: Object.values(propertyVal)
+                    movie: propertyVal
                 };
                 //push into the empty array created earlier
                 movieArray.push(formattedObj);
             }
-            setNomsArray(movieArray);
-            console.log(movieArray)
+            props.setNomsArray(movieArray);
         });
     }, []);
 
@@ -36,29 +35,34 @@ function Nominations(){
     }
 
     return(
-        <section>
+        <section className="wrapper nominations">
 
-            <p>Nominations</p>
+            <h3>Your nominations</h3>
 
                 <ul>
+
+                    < Placeholder array={[1, 2, 3, 4, 5]}/>
                     {
-                        nomsArray
-                        ? nomsArray.map((movie) => {
+
+                        props.nomsArray.map((movie) => {
                             return(
-                                <li key={movie.id}>
-                                    <p>{movie.movie[1]}</p>
-                                    <p>({movie.movie[2]})</p>
-                                    <img src={movie.movie[0]} alt={movie.movie[1]}/>
-                                    <button 
-                                        onClick={() => {handleClick(movie.id)}}
-                                    >
+                                <li key={movie.id} className="movie movie__top">
+
+                                    < Movie 
+                                        title={movie.movie.title}
+                                        year={movie.movie.year}
+                                        poster={movie.movie.posterUrl}
+                                    />
+
+                                    <button
+                                            onClick={() => {handleClick(movie.id)}}
+                                        >
                                             Remove
                                     </button>
+
                                 </li>
-                                
                             )
                         })
-                        : <p>No current nominations</p>
 
                     }
                 </ul>
