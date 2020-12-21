@@ -1,5 +1,4 @@
 function Movie(props){
-
     const { movie } = props;
     const backgroundColor = '#F4F5FA';
 
@@ -19,7 +18,6 @@ function Movie(props){
                         <p>Poster not available</p>
                 </div>
         }
-
             <div className="movie__info">
                 <p>{movie.Title}</p>
                 <p>({movie.Year})</p>

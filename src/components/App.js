@@ -7,7 +7,6 @@ import Nominations from './Nominations'
 import Footer from './Footer'
 
 function App() {
-
     const [ nomsArray, setNomsArray ] = useState([]);
 
     return (

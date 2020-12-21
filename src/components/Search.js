@@ -3,13 +3,10 @@ import Movie from './Movie';
 import axios from 'axios';
 import firebase from '../firebase.js'
 
-
-
 function Search(props){
     const [ movieSearch, setMovieSearch ] = useState('');
     const [ movieSearchArray, setMovieSearchArray ] = useState([]);
     const [ filteredArray, setFilteredArray ] = useState([]);
-
     const { nomsArray } = props;
 
     //API call to get movies that match the user input
@@ -26,7 +23,6 @@ function Search(props){
                 setMovieSearchArray(response.data.Search.slice(0 , 5));
             }
         }) 
-
     }, [movieSearch])
 
 //Save a filtered array with only the IDs in order to check the search IDs against the nominations IDs
@@ -52,7 +48,6 @@ function Search(props){
         };
         const filteredArray = array1.diff(array2);
         setFilteredArray(filteredArray);
-
     }, [nomsArray, movieSearchArray])
     
 
@@ -108,13 +103,11 @@ return (
                 onChange={handleChange}
                 >
             </input>
-            
-                <button
-                    onClick={handleClear}
-                >
-                        Clear search
-                </button>
-            
+            <button
+                onClick={handleClear}
+            >
+                    Clear search
+            </button>
         </form>
 
         {
@@ -122,8 +115,6 @@ return (
             ? <p>Results for "{movieSearch}"</p>
             : <p>Enter a title to display movies.</p>
         }
-
-        <div className="ulContainer">
 
             {/* //Display the movies on the page by mapping through the array */}
             <ul>
@@ -147,15 +138,12 @@ return (
                 })
             }
             </ul>
-
-        </div>
     
     </section>
 );
 }
 
 function Button(props){
-
     const [ buttonStatus , setButtonStatus ] = useState(true);
     const { filteredArray, movie } = props;
 
