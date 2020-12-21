@@ -42,7 +42,7 @@ The workaround I found was to only set the state of the results array if the res
   
   When the "nominate" button is slciked, that movie is pushed into a firebase database. 
   
-  Based on a comparison between the search result array, and the nominations array (firebase reference), a different button is rendered in the search results - Nominate (active) OR Nomiated (disabled).
+  Based on a comparison between the search result array, and the nominations array (firebase reference), a different button is rendered in the search results - Nominate (active) OR Added (disabled).
   
   Once the user has chosen five nominations, the search field disapears and banner thanks the user for their nominations. 
   
