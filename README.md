@@ -9,6 +9,7 @@ As a former Shopifolk (Culinary Partnerships, laid off after Covid), I feel conf
 ## About this project
 This is my second app built in React, and my first one using Hooks with function components (rather that class components).
 Web Development is still quite new to me, by I love trying new things and learnign from them. I took this challenge as a great opportunity to learn something new. 
+
 Uses: Sass, React, OMDB REST api, Firebase RealTime Database
 
 ## Challenges:
@@ -34,11 +35,17 @@ The workaround I found was to only set the state of the results array if the res
     
   ## How does it work?
   The user enters characters into the search input. On change, the input is saved and used to make an API call to OMDB. 
+  
   Results are rendered on the page. 
+  
   The user can click a "nominate" button to add the movie to their nominations. 
+  
   When the "nominate" button is slciked, that movie is pushed into a firebase database. 
+  
   Based on a comparison between the search result array, and the nominations array (firebase reference), a different button is rendered in the search results - Nominate (active) OR Nomiated (disabled).
+  
   Once the user has chosen five nominations, the search field disapears and banner thanks the user for their nominations. 
+  
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
