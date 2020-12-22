@@ -50,7 +50,7 @@ input[type="text"]{
     right: 50px;
     display: flex;
     flex-direction: column;
-    height: 25px;
+    height: fit-content;
     width: 350px;
     padding: 10px;
     &__movie {
