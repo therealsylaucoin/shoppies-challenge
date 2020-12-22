@@ -24,7 +24,8 @@ return (
 
         {
         bannerShow
-            ? < Banner />
+            ? < Banner 
+                setBannerShow={setBannerShow}/>
             : null
         }
 
