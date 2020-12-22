@@ -44,3 +44,9 @@ button {
         }
     }
 }
+
+@media (max-width: 410px) {
+    .banner {
+        height: 300px;
+    }
+}
