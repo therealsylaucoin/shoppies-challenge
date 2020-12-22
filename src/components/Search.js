@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import Movie from './Movie';
 import axios from 'axios';
 import firebase from '../firebase.js'
+import { AiFillCloseCircle, AiOutlineSearch } from 'react-icons/ai';
 
 function Search(props){
     const [ movieSearch, setMovieSearch ] = useState('');
@@ -88,50 +89,57 @@ function Search(props){
     }
 
 return (
-    <section className="search wrapper">
+    <header className="search wrapper">
 
-        <h3>Search for a movie</h3>
+        {/* <h3>Search for a movie</h3> */}
 
-        <form>
-            <label className="srOnly" htmlFor='movieSearch'>Movie title: </label>
-            <input 
-                type='text' 
-                id='movieTitle'
-                placeholder="Movie title"
-                autoComplete="off"
-                onKeyDown={handleKeyPress}
-                onChange={handleChange}
-                >
-            </input>
-            <button
-                onClick={handleClear}
-            >
-                    Clear search
-            </button>
-        </form>
 
-        {
-            movieSearch
-            ? <p>Results for "{movieSearch}"</p>
-            : <p>Enter a title to display movies.</p>
-        }
+            <div className="title">
+                <h1>The 2021 Shoppies</h1>
+                <h2>Movie Awards for Entrepreneurs</h2>
+            </div>
+
+            <div className="movieSearch">
+                    <label className="srOnly" htmlFor='movieSearch'>Enter movie title:</label>
+                    <span className="icon">< AiOutlineSearch /></span>
+                    <input 
+                        type='text' 
+                        id='movieTitle'
+                        placeholder="Search Movies"
+                        autoComplete="off"
+                        onKeyDown={handleKeyPress}
+                        onChange={handleChange}
+                        >
+                </input>
+
+            {
+            movieSearchArray.length >= 1
+                ? <button
+                    onClick={handleClear}
+                    >
+                        <span className="icon">< AiFillCloseCircle /></span>
+                    </button>
+                    : null
+            }
+            </div>
 
             {/* //Display the movies on the page by mapping through the array */}
-            <ul>
+            <ul className="results">
             {   
                 movieSearchArray.map((movie) => {
                     return(
-                        <li key={movie.imdbID} className="movie">
+                        <li key={movie.imdbID} className="results__movie">
                             < Movie
                                 movie={movie}
                             />
                             
                             < Button 
                                 filteredArray={filteredArray}
+                                nomsArray={nomsArray}
                                 handleClick={handleClick}
                                 movie={movie}
                                 label='Nominate'
-                                altLabel='Nominated'
+                                altLabel='Added'
                             />
                         </li>
                     )
@@ -139,13 +147,13 @@ return (
             }
             </ul>
     
-    </section>
+    </header>
 );
 }
 
 function Button(props){
     const [ buttonStatus , setButtonStatus ] = useState(true);
-    const { filteredArray, movie } = props;
+    const { filteredArray, nomsArray, movie } = props;
 
     useEffect(() => {
         if (filteredArray.includes(movie.imdbID)) {
@@ -156,17 +164,21 @@ function Button(props){
     }, [filteredArray, movie.imdbID])
 
     return(
-        buttonStatus
-        ?   <button 
-                id={movie.imdbID}
-                onClick={() => 
-                    {props.handleClick(movie)}}
-                    >
-                {props.label}
-            </button>
-        :   <button className="disabled">
-                {props.altLabel}
-            </button>
+        nomsArray.length < 5
+
+        ? buttonStatus
+            ?   <button 
+                    id={movie.imdbID}
+                    onClick={() => 
+                        {props.handleClick(movie)}}
+                >
+                    {props.label}
+                </button>
+            :       <button className="disabled">
+                    {props.altLabel}
+                </button>
+
+        : null
     )
 }
 

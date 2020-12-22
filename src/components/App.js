@@ -1,6 +1,5 @@
 import '../styles/App.scss';
 import { useState } from 'react';
-import Header from './Header';
 import Banner from './Banner'
 import Search from './Search';
 import Nominations from './Nominations'
@@ -8,37 +7,31 @@ import Footer from './Footer'
 
 function App() {
     const [ nomsArray, setNomsArray ] = useState([]);
+    const [ bannerShow, setBannerShow ] = useState(false);
 
-    return (
-
+return (
     <div className="App">
 
-        < Header />
+        < Search 
+            nomsArray={nomsArray}
+        />
 
-        <main>
+        < Nominations 
+            setNomsArray={setNomsArray}
+            nomsArray={nomsArray}
+            setBannerShow={setBannerShow}
+        />
 
-            <section>
-                {
-                nomsArray.length === 5
-                ? < Banner />
-                : < Search 
-                    nomsArray={nomsArray}
-                />
-                }
-            </section>
-
-            < Nominations 
-                setNomsArray={setNomsArray}
-                nomsArray={nomsArray}
-            />
-
-        </main>
+        {
+        bannerShow
+            ? < Banner />
+            : null
+        }
 
         <Footer />
 
     </div>  
-
-    );
+);
 }
 
 export default App;
