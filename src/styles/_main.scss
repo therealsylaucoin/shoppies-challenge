@@ -32,7 +32,16 @@ button {
     p {
         margin: 5px 0;
     }
-    
+    button {
+        margin: 20px;
+    }
+    button:last-of-type {
+        background-color: var(--darkblue);
+        border: 1px solid var(--blue);
+        &:hover, &:focus {
+            opacity: 0.5;
+        }
+    }
 }
 
 @media (max-width: 400px) {

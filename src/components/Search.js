@@ -20,7 +20,7 @@ function Search(props){
                 s: movieSearch,
             }
         }).then((response) => {
-            if (response.data.Search !== undefined){
+            if (response.data.Search){
                 setMovieSearchArray(response.data.Search.slice(0 , 5));
             }
         }) 
