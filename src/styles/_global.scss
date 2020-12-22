@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Open+Sans:wght@400;700&display=swap');
+
+:root {
+    --lighter: #F4F5FA;
+    --lightblue: #B3BCF5;
+    --blue: #5C6AC4;
+    --darkblue: #202E78;
+    --base: #212B36;
+    --headingFont: 'Open Sans', sans-serif;
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.8rem;
+    --font: 'Lato', sans-serif;;
+    color: var(--base);
+}
+
+.wrapper {
+    max-width: 1280px;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.App {
+    text-align: center;
+    font-family: var(--font);
+}
+
+h1, h2, h3 {
+    font-family: var(--headingFont);
+    font-weight: 700;
+}
+
+//strip styles
+* {
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+@media (max-width:560px) {
+    .wrapper {
+        width: 100%;
+    }
+}

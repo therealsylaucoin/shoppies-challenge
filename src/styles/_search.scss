@@ -1,0 +1,127 @@
+//Search
+.search {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+//Title text
+.title {
+    text-align: left;
+}
+
+//Movie search bar
+.movieSearch {
+    border: none;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #DCDFEF;
+    width: 350px;
+    border-radius: 4px;
+    padding: 5px 15px;
+    button {
+        justify-self: flex-end;
+        background-color: #DCDFEF;
+        border-radius: 50px;
+        padding: 0;
+        box-shadow: none;
+    }
+}
+
+.icon {
+    font-size: 3rem;
+}
+
+input[type="text"]{
+    padding: 10px 15px;
+    color: var(--darkblue);
+    background-color: transparent;
+    font-family: var(--headingFont);
+    border: none;
+}
+
+//results
+.results {
+    position: absolute;
+    top: 150px;
+    right: 50px;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    width: 350px;
+    padding: 10px;
+    &__movie {
+        display: flex;
+        height: 100px;
+        padding: 10px;
+        flex-direction: row;
+        background-color: var(--lighter);
+        align-items: center;
+    }
+}
+
+.results__movie {
+    .img {
+        width: 40px;
+        height: 60px;
+        box-shadow: 0 5px 15px 0 rgba(0,0,0,0.15);
+        background-size: cover;
+        background-position: center;
+        color: var(--darkblue);
+        font-weight: 400;
+        padding: 20px;
+    }
+
+    .info {
+        text-align: left;
+        font-size: 1.6rem;
+        margin: 10px;
+        width: 185px;
+        p:first-of-type {
+            font-family: var(--headingFont);
+            font-weight: 700;
+        }
+    }
+    
+}
+
+.disabled {
+    background-color: var(--darkblue);
+    cursor: auto;
+}
+
+//Media Queries
+@media (max-width: 1125px) {
+    .search {
+        align-items:flex-start;
+        flex-direction: column;
+        h2 {
+            font-size: 2rem;
+        }
+    }
+    .movieSearch {
+        margin: 30px 0;
+    }
+
+    .results {
+        top: 250px;
+        left: 40px;
+    }
+}
+
+@media (max-width: 430px) {
+    .movieSearch {
+        width: 250px;
+        .movieTitle {
+            width: 200px;
+        }
+    }
+    .results {
+        top: 300px;
+    }
+}
+
+
