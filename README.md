@@ -16,36 +16,24 @@ Uses: Sass, React, OMDB REST api, Firebase RealTime Database
 The OMDB api returns "Error response: Too many results" (and undefined result) when the user has types only a few letters. 
 The documentation for the api provides no parameter to limit the results. 
 I tried using the page parameter, but that did not solve the error. 
-The workaround I found was to only set the state of the results array if the response was not undefined (Search component, line 21)
-
-    useEffect(() => {
-        axios({
-            url: 'https://www.omdbapi.com/?apikey=ccfe7e55&',
-            method: 'GET',
-            params: {
-                type: 'movie',
-                s: movieSearch,
-            }
-        }).then((response) => {
-            if (response.data.Search !== undefined){
-                setMovieSearchArray(response.data.Search.slice(0 , 5));
-            }
-        }) 
-    }, [movieSearch])
+After contacting a few folks on gitHub, it seems that this is simply the way the API returns results. At this time, I haven;t found a solution/workaround.
     
-  ## How does it work?
-  The user enters characters into the search input. On change, the input is saved and used to make an API call to OMDB. 
+## How does it work?
+The user enters characters into the search input. On change, the input is saved and used to make an API call to OMDB. 
   
-  Results are rendered on the page. 
+Results are rendered on the page. 
   
-  The user can click a "nominate" button to add the movie to their nominations. 
+The user can click a "nominate" button to add the movie to their nominations. 
   
-  When the "nominate" button is slciked, that movie is pushed into a firebase database. 
+When the "nominate" button is slciked, that movie is pushed into a firebase database. 
   
-  Based on a comparison between the search result array, and the nominations array (firebase reference), a different button is rendered in the search results - Nominate (active) OR Added (disabled).
+Based on a comparison between the search result array, and the nominations array (firebase reference), a different button is rendered in the search results - Nominate (active) OR Added (disabled).
   
-  Once the user has chosen five nominations, the search field disapears and banner thanks the user for their nominations. 
+Once the user has chosen five nominations, the search field disapears and banner thanks the user for their nominations. 
   
+
+
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
