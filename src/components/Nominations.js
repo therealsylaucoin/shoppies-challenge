@@ -44,7 +44,6 @@ function Nominations(props){
         } else {
             setBannerShow(false);
         }
-        console.log(placeholderArray.length, placeholderArray);
     }, [nomsArray, setBannerShow])
 
 //HandleClick to remove movies from database
