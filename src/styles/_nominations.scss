@@ -32,7 +32,7 @@
     .placeholder {
         margin: 10px;
         width: 175px;
-        min-height: 275px;
+        height: 275px;
         color: #C7C7C7;
         background-color: var(--lighter);
         font-size: 6rem;
@@ -43,7 +43,7 @@
 .nomination__movie {
     .img {
         width: 175px;
-        height: 275px;
+        min-height: 275px;
         box-shadow: 0 5px 15px 0 rgba(0,0,0,0.15);
         background-size: cover;
         background-position: center;
