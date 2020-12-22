@@ -7,7 +7,7 @@ I recently finished the Web Development bootcamp at Juno College. I'm excited to
 As a former Shopifolk (Culinary Partnerships, laid off after Covid), I feel confident that an intership at Shopify can offer me the proper mentorship to grow exponentially into my new career path as a Web Developer. 
 
 ## About this project
-This is my second app built in React, and my first one using Hooks with function components (rather that class components).
+This is my third app built in React, and my first one using Hooks with function components (rather that class components).
 Web Development is still quite new to me, by I love trying new things and learnign from them. I took this challenge as a great opportunity to learn something new. 
 
 Uses: Sass, React, OMDB REST api, Firebase RealTime Database
@@ -16,7 +16,10 @@ Uses: Sass, React, OMDB REST api, Firebase RealTime Database
 The OMDB api returns "Error response: Too many results" (and undefined result) when the user has types only a few letters. 
 The documentation for the api provides no parameter to limit the results. 
 I tried using the page parameter, but that did not solve the error. 
-After contacting a few folks on gitHub, it seems that this is simply the way the API returns results. At this time, I haven;t found a solution/workaround.
+After contacting a few folks on gitHub, it seems that this is simply the way the API returns results. At this time, I haven't found a solution/workaround, other than displaying the message to the user.
+
+## Things to know:
+The Submission functionality is not included in this project. Therefor, clicking on the submit button will have no effect on the data in firebase/on the page. The buttons are currently there for presentation/placeholders, and for hiding the banner.
     
 ## How does it work?
 The user enters characters into the search input. On change, the input is saved and used to make an API call to OMDB. 
