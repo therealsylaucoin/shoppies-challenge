@@ -13,6 +13,7 @@
 
 //Movie search bar
 .movieSearch {
+    border: none;
     height: 50px;
     display: flex;
     align-items: center;
@@ -44,19 +45,20 @@ input[type="text"]{
 
 //results
 .results {
-    background-color: var(--lighter);
     position: absolute;
     top: 150px;
     right: 50px;
     display: flex;
     flex-direction: column;
+    height: 25px;
     width: 350px;
     padding: 10px;
     &__movie {
         display: flex;
         height: 100px;
+        padding: 10px;
         flex-direction: row;
-        // justify-content: space-between;
+        background-color: var(--lighter);
         align-items: center;
     }
 }
@@ -90,3 +92,36 @@ input[type="text"]{
     background-color: var(--darkblue);
     cursor: auto;
 }
+
+//Media Queries
+@media (max-width: 1125px) {
+    .search {
+        align-items:flex-start;
+        flex-direction: column;
+        h2 {
+            font-size: 2rem;
+        }
+    }
+    .movieSearch {
+        margin: 30px 0;
+    }
+
+    .results {
+        top: 250px;
+        left: 40px;
+    }
+}
+
+@media (max-width: 430px) {
+    .movieSearch {
+        width: 250px;
+        .movieTitle {
+            width: 200px;
+        }
+    }
+    .results {
+        top: 300px;
+    }
+}
+
+

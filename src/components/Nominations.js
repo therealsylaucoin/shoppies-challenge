@@ -44,6 +44,7 @@ function Nominations(props){
         } else {
             setBannerShow(false);
         }
+        console.log(placeholderArray.length, placeholderArray);
     }, [nomsArray, setBannerShow])
 
 //HandleClick to remove movies from database
@@ -57,36 +58,37 @@ return(
         <main className="wrapper nominations">
 
             <h2>My Nominations</h2>
+            <p>You have until January 17th 2021 to submit your 5 nominations.</p>
 
-                    {/* //Display the movies on the page by mapping through the array */}
-                    <ul className="nomination">
-                        { 
-                            props.nomsArray.map((movie) => {
-                                return(
-                                    <li key={movie.id} className="nomination__movie">
-                                        < Movie 
-                                            movie={movie.movie}
-                                        />
-                                        <button
-                                                onClick={() => {handleClick(movie.id)}}
-                                            >
-                                                Remove
-                                        </button>
-                                    </li>
-                                )
-                            })
-                        }
-
-                        {
-                            nomsArray.length < 5
-                            ? placeholderArray.map((index) => {
-                                return(
-                                    <li key={index} className="placeholder"></li>
-                                )
-                            })
-                            : null
-                        }
-                    </ul>
+                {/* //Display the movies on the page by mapping through the array */}
+                <ul className="nomination">
+                    { 
+                        props.nomsArray.map((movie) => {
+                            return(
+                                <li key={movie.id} className="nomination__movie">
+                                    < Movie 
+                                        movie={movie.movie}
+                                    />
+                                    <button
+                                            onClick={() => {handleClick(movie.id)}}
+                                        >
+                                            Remove
+                                    </button>
+                                </li>
+                            )
+                        })
+                    }
+                    {
+                    //If there are less than five nominations, display a placeholder, giving the user a visual cue of how many nominations they have/have left.
+                        nomsArray.length < 5
+                        ? placeholderArray.map((index) => {
+                            return(
+                                <li key={index} className="placeholder"></li>
+                            )
+                        })
+                        : null
+                    }
+                </ul>
 
         </main>
     )

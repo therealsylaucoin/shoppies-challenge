@@ -6,6 +6,8 @@
     box-shadow: 0 5px 15px 0 rgba(0,0,0,0.15);
     h2 {
         font-size: 4.5rem;
+    }
+    h2, p {
         text-align: left;
         padding: 0 50px;
     }
@@ -38,16 +40,8 @@
     }
 }
 
-
-
-
-
-
-
 .nomination__movie {
     .img {
-        // display: grid;
-        // place-items: center;
         width: 175px;
         height: 275px;
         box-shadow: 0 5px 15px 0 rgba(0,0,0,0.15);
@@ -63,12 +57,4 @@
         font-weight: 700;
         margin: 10px 0;
     }
-
 }
-
-
-
-
-
-
-

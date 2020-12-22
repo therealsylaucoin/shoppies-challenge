@@ -45,3 +45,9 @@ a {
 ul {
     list-style: none;
 }
+
+@media (max-width:560px) {
+    .wrapper {
+        width: 100%;
+    }
+}

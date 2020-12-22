@@ -12,22 +12,21 @@ function App() {
 return (
     <div className="App">
 
-        < Search 
-            nomsArray={nomsArray}
-        />
+        {
+        bannerShow
+            ?   < Banner 
+                    setBannerShow={setBannerShow}
+                />
+            :   < Search 
+                    nomsArray={nomsArray}
+                />
+        }
 
         < Nominations 
             setNomsArray={setNomsArray}
             nomsArray={nomsArray}
             setBannerShow={setBannerShow}
         />
-
-        {
-        bannerShow
-            ? < Banner 
-                setBannerShow={setBannerShow}/>
-            : null
-        }
 
         <Footer />
 

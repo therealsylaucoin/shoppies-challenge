@@ -8,6 +8,7 @@ function Search(props){
     const [ movieSearch, setMovieSearch ] = useState('');
     const [ movieSearchArray, setMovieSearchArray ] = useState([]);
     const [ filteredArray, setFilteredArray ] = useState([]);
+    const [ userMessage, setUserMessage ] = useState('');
     const { nomsArray } = props;
 
     //API call to get movies that match the user input
@@ -20,10 +21,15 @@ function Search(props){
                 s: movieSearch,
             }
         }).then((response) => {
-            if (response.data.Search){
+            if (response.data.Search !== undefined){
                 setMovieSearchArray(response.data.Search.slice(0 , 5));
+                setUserMessage('');
+            } else if (movieSearch === '' || movieSearch === undefined){
+                setUserMessage('');
+            } else { //Error handling for api returning no movies
+                setUserMessage(`For "${movieSearch}" - ${response.data.Error}`);
             }
-        }) 
+        })
     }, [movieSearch])
 
 //Save a filtered array with only the IDs in order to check the search IDs against the nominations IDs
@@ -91,16 +97,13 @@ function Search(props){
 return (
     <header className="search wrapper">
 
-        {/* <h3>Search for a movie</h3> */}
-
-
             <div className="title">
                 <h1>The 2021 Shoppies</h1>
                 <h2>Movie Awards for Entrepreneurs</h2>
             </div>
 
-            <div className="movieSearch">
-                    <label className="srOnly" htmlFor='movieSearch'>Enter movie title:</label>
+            <fieldset className="movieSearch">
+                    <label className="srOnly" htmlFor='movieSearch'>Enter movie     title:</label>
                     <span className="icon">< AiOutlineSearch /></span>
                     <input 
                         type='text' 
@@ -111,8 +114,8 @@ return (
                         onChange={handleChange}
                         >
                 </input>
-
             {
+            //If the movieSearch input has more than one character, give the user the ability to clear the field and results
             movieSearchArray.length >= 1
                 ? <button
                     onClick={handleClear}
@@ -121,61 +124,70 @@ return (
                     </button>
                     : null
             }
-            </div>
+            </fieldset>
+            
+            {
+            //If there is a userMessage (error message form the api) - 
+            //Display that message to the user,
+            //Else, display the search results (ul)
+            userMessage
+                ?  <p className="results">{userMessage}</p>
 
-            {/* //Display the movies on the page by mapping through the array */}
-            <ul className="results">
-            {   
-                movieSearchArray.map((movie) => {
-                    return(
-                        <li key={movie.imdbID} className="results__movie">
-                            < Movie
-                                movie={movie}
-                            />
-                            
-                            < Button 
-                                filteredArray={filteredArray}
-                                nomsArray={nomsArray}
-                                handleClick={handleClick}
-                                movie={movie}
-                                label='Nominate'
-                                altLabel='Added'
-                            />
-                        </li>
-                    )
-                })
+                :   <ul className="results">
+                {   
+                    movieSearchArray.map((movie) => {
+                        return(
+                            <li key={movie.imdbID} className="results__movie">
+                                < Movie
+                                    movie={movie}
+                                />
+
+                                < Button 
+                                    filteredArray={filteredArray}
+                                    nomsArray={nomsArray}
+                                    handleClick={handleClick}
+                                    movie={movie}
+                                />
+                            </li>
+                        )
+                    })
+                }
+                </ul>
             }
-            </ul>
-    
+
     </header>
 );
 }
 
 function Button(props){
     const [ buttonStatus , setButtonStatus ] = useState(true);
+    const [ buttonLabel, setButtonLabel ] = useState('Nominate')
     const { filteredArray, nomsArray, movie } = props;
 
     useEffect(() => {
         if (filteredArray.includes(movie.imdbID)) {
             setButtonStatus(false);
+            setButtonLabel('Added');
         } else {
             setButtonStatus(true);
+            setButtonLabel('Nominate');
         }
     }, [filteredArray, movie.imdbID])
 
     return(
+        //render the buttons only if the nomsArray is not full (aka less than five). If the user has nominated 5 movies already, the button will not show.
         nomsArray.length < 5
 
-        ? buttonStatus
+        ? buttonStatus //Bases on the status, button will be different(able or disabled)
             ?   <button 
                     id={movie.imdbID}
                     onClick={() => 
                         {props.handleClick(movie)}}
                 >
-                    {props.label}
+                    {buttonLabel}
                 </button>
             :       <button className="disabled">
-                    {props.altLabel}
+                    {buttonLabel}
                 </button>
 
         : null
