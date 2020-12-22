@@ -3,7 +3,7 @@ import firebase from '../firebase';
 import Movie from './Movie';
 
 function Nominations(props){
-    const { nomsArray, setNomsArray } = props;
+    const { nomsArray, setNomsArray, setBannerShow } = props;
     const [ placeholderArray, setPlaceholderArray ] = useState([]);
 
     useEffect(() => {
@@ -38,6 +38,12 @@ function Nominations(props){
             array.push(i);
             setPlaceholderArray(array);
         }
+        //display/hide banner 
+        if (nomsArray.length === 5){
+            setBannerShow(true);
+        } else {
+            setBannerShow(false);
+        }
     }, [nomsArray])
 
 //HandleClick to remove movies from database
@@ -48,16 +54,16 @@ function Nominations(props){
     }
 
 return(
-        <section className="wrapper nominations">
+        <main className="wrapper nominations">
 
-            <h3>Your nominations</h3>
+            <h2>My Nominations</h2>
 
                     {/* //Display the movies on the page by mapping through the array */}
-                    <ul>
+                    <ul className="nomination">
                         { 
                             props.nomsArray.map((movie) => {
                                 return(
-                                    <li key={movie.id} className="movie">
+                                    <li key={movie.id} className="nomination__movie">
                                         < Movie 
                                             movie={movie.movie}
                                         />
@@ -75,15 +81,14 @@ return(
                             nomsArray.length < 5
                             ? placeholderArray.map((index) => {
                                 return(
-                                    <li key={index} className="placeholder">
-                                    </li>
+                                    <li key={index} className="placeholder"></li>
                                 )
                             })
                             : null
                         }
                     </ul>
 
-        </section>
+        </main>
     )
 }
 

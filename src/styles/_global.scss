@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato&family=Open+Sans:wght@400;700&display=swap');
 
 :root {
+    --lighter: #F4F5FA;
     --lightblue: #B3BCF5;
     --blue: #5C6AC4;
     --darkblue: #202E78;
     --base: #212B36;
-    --muted: #F4F5FA;
     --headingFont: 'Open Sans', sans-serif;
     font-size: 62.5%;
 }
@@ -38,20 +38,10 @@ h1, h2, h3 {
     margin: 0;
 }
 
-li {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+a {
+    text-decoration: none;
 }
 
 ul {
     list-style: none;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-a {
-    text-decoration: none;
 }
