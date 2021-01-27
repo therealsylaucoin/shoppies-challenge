@@ -28,7 +28,7 @@ Results are rendered on the page.
   
 The user can click a "nominate" button to add the movie to their nominations. 
   
-When the "nominate" button is slciked, that movie is pushed into a firebase database. 
+When the "nominate" button is clicked, that movie is pushed into a firebase database. 
   
 Based on a comparison between the search result array, and the nominations array (firebase reference), a different button is rendered in the search results - Nominate (active) OR Added (disabled).
   
